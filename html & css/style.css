@@ -1,0 +1,34 @@
+#main{
+    background-color: rgb(227, 227, 228);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+h1{
+    font-size: 30pt;
+    margin-bottom: 0;
+}
+#img-div{
+    background-color:white;
+}
+img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    margin: 0 auto;
+}
+ul{
+    max-width: 550px;
+    
+    text-align: left;
+}
+li{
+    margin-bottom: 15px;
+}
+#img-caption{
+
+}
+#tribute-info{ 
+}

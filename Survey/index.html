@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<div class="container">
+  <head>
+    <title>Front-end job application</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <header>
+    <h1 id="title" class="title">Job Application</h1>
+    <p id="description" class="description">This is an application for front-end position</p>
+  </header>
+  <form onsubmit="" id="survey-form">
+    <div class="form-group">
+      <label id="name-label" for="name">Name</label>
+      <input type="text" placeholder="Name" id="name" class="input-text" required>
+    </div>
+    <div class="form-group">
+      <label id="email-label" for="email">Email adress</label>
+      <input type="email" placeholder="Email adress" id="email" class="input-text" required>
+    </div>
+    <div class="form-group">
+      <label id="number-label" for="age">Age</label>
+      <input type="number" min="10" max="90" placeholder="Age" id="number" class="input-text">
+    </div>
+    
+    <div class="form-group">
+      <label id="Experience level"  for="dropdown">What is your level of experience</label>
+      <select name="" id="dropdown" class="form-control" required>
+        <option disabled selected value="student">--Enter your level of experience--</option>
+        <option value="student">Student</option>
+        <option value="entry">Entry-level</option>
+        <option value="mid">Mid-level</option>
+        <option value="experienced">Experienced</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Gender</label>
+      <label>
+        <input type="radio" value="male" name="gender" class="input-radio">
+        Male
+      </label>
+      <label>
+        <input type="radio" value="female" name="gender" class="input-radio">
+        Female
+      </label>
+      <label>
+        <input type="radio" value="preferNotToSay" name="gender" class="input-radio">
+        Prefer Not to say
+      </label>
+    </div>
+    
+    <div class="form-group">
+      <label>
+        What technologies are you familiar with?
+        <span class="clue">(Check all that apply)</span>
+      </label>
+      <label>
+        <input type="checkbox" value="html" name="technologies">
+        HTML5
+      </label>
+      <label>
+        <input type="checkbox" value="css" name="technologies">
+        CSS
+      </label>
+      <label>
+        <input type="checkbox" value="javascript" name="technologies">
+        JavaScript
+      </label>
+      <label>
+        <input type="checkbox" value="typescript" name="technologies">
+        TypeScript
+      </label>
+      <label>
+        <input type="checkbox" value="react" name="technologies">
+        React.js
+      </label>
+      <label>
+        <input type="checkbox" value="redux" name="technologies">
+        Redux
+      </label>
+      <label>
+        <input type="checkbox" value="sass" name="technologies">
+        SASS
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>
+        Do you have any other comments?
+        <span class="clue">(Opional)</span>
+      </label>
+      <textarea name="comments" id="comments" class="input-textarea"></textarea>
+    </div>
+
+    <div class="form-group">
+      <button id="submit" type="submit" class="submit-button">Submit</button>
+    </div>
+    
+  </form>
+
+</div>
