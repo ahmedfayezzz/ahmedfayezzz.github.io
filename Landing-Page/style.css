@@ -28,7 +28,7 @@ header{
   padding:5px 70px 5px 20px;
   background-color: var(--nav);
   width: 100%;
-  height: 70px;
+  height: 95px;
 }
 .white{
   color: #e5ffff;
@@ -45,7 +45,7 @@ h2{
   font-family: 'Secular One', sans-serif;;
 }
 #header-img{
-  width: 50px;
+  width: 80px;
   height: 100%;
 }
 
@@ -58,6 +58,7 @@ nav li{
 }
 li a{
   display: block;
+  font-size: 3rem;
   padding:2rem;
   text-decoration: unset;
   color: var(--font);
@@ -70,25 +71,27 @@ li a:hover{
 
 /***** container *****/
 h1{
-  font-size: 3rem;
+  font-size: 4rem;
 }
 .container{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 9rem 10vw;
+  margin: 9rem auto;
 }
 #form{
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 40vw; 
+  max-width: 400px;
 }
 input{
   font-family: inherit;
   font-size: 1.6rem;
   display: block;
-  width: 26rem;
-  height: 3rem;
+  width: 100%;
+  height: 4rem;
   outline: none;
 }
 input[type=email]:focus{
@@ -99,7 +102,7 @@ input[type=email]:focus{
 }
 button{
   font-family: inherit;
-  font-size: 1.6rem;
+  font-size: 2.5rem;
   font-weight: bold;
   margin:1.6rem;
   padding: 0.6rem;
@@ -124,7 +127,7 @@ section{
 }
 article{
   display: grid;
-  grid: 23vh/150px 1fr; 
+  grid: 23vh/180px 1fr; 
   grid-template-areas: 
     "icon paragraph";
   align-items: center;
@@ -132,7 +135,7 @@ article{
 }
 .icon{
   grid-area: icon;
-  font-size: 5rem;
+  font-size: 7rem;
   color: var(--primary);
   margin: 5rem;
   text-align: center;
