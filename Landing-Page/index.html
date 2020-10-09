@@ -1,9 +1,22 @@
 <!DOCTYPE html>
 <main class="main">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
     <title>Landing Page</title>
     <script src="https://kit.fontawesome.com/2a5ff192ac.js" crossorigin="anonymous"></script>
+    <script>
+      function myFunction() {
+        
+        var x = document.getElementById("nav-bar");
+        if (x.className === "nav-bar") {
+          x.className = "responsive-nav";
+          console.log(x.className)
+        } else {
+          x.className = "nav-bar";
+        }
+      }
+      </script>
   </head>
   <body>
     <header id="header">
@@ -11,19 +24,21 @@
         <img id="header-img" src="data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTEwLjIxMyA1MTAuMjEzIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMC4yMTMgNTEwLjIxMyIgd2lkdGg9IjUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Zz48Zz48cGF0aCBkPSJtOTAuMTA2IDM0Ni45MTNjMC0yOC41MTIgMjAuNDEzLTUyLjYwOCA0OC41MzctNTcuMjk2bC00LjkzMi0yOS41OTJjLTQyLjY1IDcuMTA5LTczLjYwNSA0My42NS03My42MDUgODYuODg5IDAgNDguNTcgMzkuNTE2IDg4LjA4NiA4OC4wODYgODguMDg2aDE4MS45MTR2LTMwaC0xODEuOTE0Yy0zMi4wMjggMC01OC4wODYtMjYuMDU4LTU4LjA4Ni01OC4wODd6Ii8+PHBhdGggZD0ibTM2Mi4wMjEgNzVoLTE4MS45MTV2MzBoMTgxLjkxNGMzMi4wMjggMCA1OC4wODYgMjYuMDU4IDU4LjA4NiA1OC4wODcgMCAyOC41MTItMjAuNDEzIDUyLjYwOC00OC41MzcgNTcuMjk2bDQuOTMyIDI5LjU5MmM0Mi42NS03LjEwOSA3My42MDUtNDMuNjUgNzMuNjA1LTg2Ljg4OSAwLTQ4LjU3LTM5LjUxNS04OC4wODYtODguMDg1LTg4LjA4NnoiLz48cGF0aCBkPSJtMjc5Ljg4NSAyMzUuNjYzLTYxLjkwMy01OS4zNTYtMjAuNzYzIDIxLjY1NCA0NS43MzggNDMuODU3LTI2LjQzMyA0LjQwNS0yNy4xMzctMjIuMTE4LTE4Ljk1MyAyMy4yNTQgMjIuNDI1IDE4LjI3OS0xNC42MzMgMjQuOTU4IDI1Ljg3OCAxNS4xNzQgMTcuNTg4LTI5Ljk5NCAyOC4wODktNC42ODItMjguNjc3IDU5LjM5OSAyNy4wMTUgMTMuMDQzIDM3Ljg5LTc4LjQ4IDQ4Ljc2LTguMTI2LTQuOTMyLTI5LjU5MnoiLz48L2c+PHBhdGggZD0ibTc1LjEwNiAwYy00MS4zNTUgMC03NSAzMy42NDUtNzUgNzUgMCA0NC45MTYgNTcuODAzIDEwNC4wMTYgNjQuMzk0IDExMC42MDZsMTAuNjA2IDEwLjYwNiAxMC42MDYtMTAuNjA2YzYuNTkxLTYuNTkxIDY0LjM5NC02NS42OSA2NC4zOTQtMTEwLjYwNiAwLTQxLjM1NS0zMy42NDQtNzUtNzUtNzV6bTE1IDkwaC0zMHYtMjguNzgyaDMweiIvPjxwYXRoIGQ9Im00MzUuMTA2IDMxNGMtNDEuMzU1IDAtNzUgMzMuNjQ1LTc1IDc1IDAgNDQuOTE2IDU3LjgwMyAxMDQuMDE2IDY0LjM5NCAxMTAuNjA2bDEwLjYwNiAxMC42MDYgMTAuNjA2LTEwLjYwNmM2LjU5MS02LjU5MSA2NC4zOTQtNjUuNjkgNjQuMzk0LTExMC42MDYgMC00MS4zNTUtMzMuNjQ0LTc1LTc1LTc1em0xNSA5MGgtMzB2LTI4Ljc4MmgzMHoiLz48L2c+PC9zdmc+" />
         <h2>Travel <span class="white">Global</span></h2>
       </div>
-      <nav id="nav-bar">
+      <nav id="nav-bar" class="nav-bar">
         <ul>
           <li class="nav-link">
-            <a href="#">About</a>
+            <a href="#about">About</a>
           </li>
           <li class="nav-link">
-            <a href="">Destinations</a>
+            <a href="#video">Destinations</a>
           </li>
           <li class="nav-link">
-            <a href="">Pricing</a>
+            <a href="#pricing">Pricing</a>
           </li>
         </ul>
       </nav>
+      <a class="menu-drop" href="javascript:void(0)" onclick="myFunction()"><i class="fas fa-bars menu"></i></a>
+      <div class="dropdown"></div>
     </header>
     <div class="container">
       <h1>WE GO WHERE YOU GO </h1>
@@ -35,7 +50,7 @@
           id="email">
         <button class="my-btn">Subscribe</button>
       </form>
-      <section>
+      <section id="about" class="about-section">
         <article>
           <div class="icon">
             <i class="fas fa-archway"></i>
@@ -44,6 +59,7 @@
             <h1>Lifetime Experience</h1>
             <p>Dream big and join a lifetime experience. From a Skydiving over the Pyramids to Bungy Jump in the Swiss Alps to Volcano Hike in Lombok.</p>
           </div>
+          
         </article>
         <article>
           <div class="icon">
@@ -72,15 +88,51 @@
             <h1>Nature Retreat</h1>
             <p>From a camping trip to national parks, mountains, and off the beaten track, join the nomads and travel to meditate.</p>
           </div>
+          
         </article>
       </section>
-      <!-- 
-        form
-          email
-          submit 
-      -->
-      <!-- video -->
+      <h1>Destinations</h1>
+      <iframe id="video" width="727" height="409" src="https://www.youtube.com/embed/rsv4drcgHys" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      
+      <h1>Prices</h1>
+      <section id="pricing" class="cards">
+        <article class="card">
+          <h3>Ain Sokhna Fishing Trip</h3>
+          <p>
+            Spend the whole day on private Yacht fishing, swimming, or just relaxing off the Shore of Ain Sokhna coastal city.
+A trip is best if you are on a short stay in Cairo and wish to spend some time in the Red Sea.
+          </p>
+          <h4>700 EGP</h4>
+        </article>
+        <article class="card">
+          <h3>Abu Simbel Tour</h3>
+          <p>
+            Abu Simbel Temples of the King Ramses II, are the famous temples deep south of Egypt where the sun shines and light the King’s and Queen’s statue on their face twice a year, 22nd of October and 22nd of February.
+          </p>
+          <h4>1400 EGP</h4>
+        </article>
+        <article class="card">
+          <h3>Aswan City Tour</h3>
+          <p>Aswan City Tour is a full day escorted to visit the tourist highlights in Aswan.  Get on a boat and ride till you reach Philae Island and visit the Temples, visit the Unfinished Obelisk, and visit the Gigantic High Dam.</p>
+          <h4>3000 EGP</h4>
+        </article>
+      </section>
     </div>
-    <footer></footer>
+    <footer>
+      <nav id="nav-bar-footer">
+        <ul>
+          <li class="nav-link-footer">
+            <a href="#">Privacy</a>
+          </li>
+          <li class="nav-link-footer">
+            <a href="">Terms</a>
+          </li>
+          <li class="nav-link-footer">
+            <a href="">Contact</a>
+          </li>
+        </ul>
+        <small>Copyright 2020, Ahmed Fayez</small>
+      </nav>
+    </footer>
   </body>
 </main class="main">

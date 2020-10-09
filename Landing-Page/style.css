@@ -10,6 +10,7 @@
   font-family: 'Roboto', sans-serif;
   --background:#e5ffff;
   --nav:hsl(180, 60%,40%);
+  --footer:rgb(227, 231, 231);
   --primary:#F0A624;
   --font:#212424;
 }
@@ -28,10 +29,20 @@ header{
   justify-content: space-between;
   position: fixed;
   top: 0rem;
-  padding:5px 70px 5px 20px;
+  padding:5px 70px 0px 20px;
   background-color: var(--nav);
   width: 100%;
   height: 70px;
+  box-shadow: 0 0 5px black;
+}
+.menu-drop{
+  display: none;
+}
+.menu{
+  font-size: 5rem;
+}
+.dropdown{
+  display: none;
 }
 .white{
   color: #e5ffff;
@@ -59,7 +70,8 @@ nav li{
   font-weight: 500;
   /* background-color: white; */
 }
-li a{
+.nav-bar a,
+.responsive-nav a{
   display: block;
   padding:2rem;
   text-decoration: unset;
@@ -67,7 +79,8 @@ li a{
   background-color: var(--nav);
   transition: ease;
 }
-li a:hover{
+.nav-bar a:hover,
+.responsive-nav a:hover{
   filter: grayscale(40%);
 }
 
@@ -79,7 +92,9 @@ h1{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 9rem 10vw;
+  margin: 100px 5%;
+  max-width: 1100px;
+
 }
 #form{
   display: flex;
@@ -118,16 +133,16 @@ button:hover{
 button:focus{
   filter:grayscale(40%);
 }
-section{
+.about-section{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   justify-content: center;  
-  margin: 2vh 10vw;
+  margin: 5rem 0;
 }
-article{
+.about-section article{
   display: grid;
-  grid: 23vh/150px 1fr; 
+  grid: 25vh/150px 1fr; 
   grid-template-areas: 
     "icon paragraph";
   align-items: center;
@@ -150,4 +165,167 @@ article  h1{
 p{
   margin: 0;
   padding: 0;
+}
+iframe+h1{
+  margin-top:10rem;
+  margin-bottom:2rem;
+}
+.cards{
+  display: flex;
+  /* flex-wrap: wrap; */
+  gap: 1rem;
+}
+.card{
+  display: grid;
+  grid-template-rows: 5rem 1fr 10rem;
+  grid-template-areas: 
+  "title"
+  "description"
+  "price";
+  gap: 0;
+  flex: 0 1 33%;
+  border: 1px solid #F0A624;
+  border-radius: 1%;
+  background-color: #e5ffff77;
+  text-align: center;
+}
+.card h3{
+  grid-area: title;
+  font-size: 2rem;
+  background-color: rgba(221, 221, 221, 0.431);
+  width: 100%;
+  margin: 0;
+  padding: 1rem;
+}
+.card p{
+  grid-area: description;
+  margin-top: 0;
+  padding: 1rem;
+}
+.cards h4{
+  justify-self: center;
+  grid-area: price;
+  color: #e5ffff;
+  padding: 1rem;
+  background-color: var(--primary);
+}
+/***** footer  *****/
+footer{
+  width: 100%;
+  height: 10rem;
+  margin-bottom: 0;
+  background-color: var(--footer);
+  padding-top: 10px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  text-align: right;
+}
+footer a{
+  background-color: unset;
+  display: block;
+  text-decoration: unset;
+  color: var(--font);
+  transition: ease;
+  margin-left: 10px;
+  padding: 0;
+}
+footer ul{
+  margin: 0;
+  padding: 0; 
+}
+footer a:focus,
+footer a:hover{
+  color: var(--color-nav);
+}
+small{
+  padding: 0;
+  margin: 0;
+  color: #686868;
+}
+.responsive-nav {
+  display: block;
+  position: fixed;
+  top: 70px;
+  width: 100%;
+}
+.responsive-nav ul{
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin:0;
+  text-align: center;
+}
+/**** Media Queries ****/
+@media screen and (max-width:780px){
+  .cards{
+    flex-direction: column;
+    max-width: 60%;
+  }
+  header{
+    padding: 0;
+  }
+  footer{
+    text-align: center;
+  }
+  input{
+    font-size: 2rem;
+  }
+  iframe{
+    width: 70%;
+    height: 50vh;
+  }
+  .menu-drop{
+    display: block;
+    margin-right:1rem;
+    text-decoration: unset;
+    color: var(--font);
+    transition: ease;
+    text-align: center;
+  }
+  .nav-bar {
+    display: none;
+    /* position: fixed;
+    top: 70px;
+    width: 100%; */
+  } 
+  .logo{
+    margin-left: 1rem;
+  }
+  
+  .about-section article{
+    display: grid;
+    grid: 40vh/150px 1fr; 
+    grid-template-areas: 
+      "icon paragraph";
+    align-items: center;
+    justify-content: center;
+  }
+  
+}
+@media (max-width:475px){
+  .cards{
+    max-width: 90%;
+  }
+  .about-section article{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+@media (max-width:425px){
+  .cards{
+    max-width: 90%;
+  }
+  
+  h2{
+    display: none;
+  }
+  .logo{
+    margin-left: 3rem;
+  }
+  .about-section article{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
 }
