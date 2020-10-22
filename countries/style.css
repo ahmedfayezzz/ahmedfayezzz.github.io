@@ -119,7 +119,7 @@ form > button{
 }
 .sort-bar{
   margin:0.5rem auto;
-  width:30vw;
+  width:35vw;
   max-width: 180px;
   border-radius:30px;
   background-color: rgb(243, 243, 243);
@@ -193,6 +193,13 @@ form > button{
 .flag > img{
   width: 150px;
   height: 100px;
+}
+a{
+  font-size: 3rem;
+  color: rgb(233, 127, 52);;
+}
+.go-up{
+  float: right;
 }
 /**** media queries ****/
 @media (max-width:768px){

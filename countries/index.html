@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>World Countries Data</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
     <link rel="stylesheet" href="./style.css" />
 </head>
@@ -36,6 +37,9 @@
             <option value="currency">Currency</option>
           </select>
         </div>
+        <div class="graph">
+          <a href="#wrapper" class="chart"><i class="fas fa-chart-bar"></i></a>
+        </div>
         <!-- <p class="subtitle">Sort by</p>
         <button onclick="handleClick(this)" class="population">Population</button>
         <button onclick="handleClick(this)" class="languages">Languages</button> -->
@@ -43,10 +47,11 @@
       <div class="countries-search">
         <ul class="cards-list"></ul>
       </div>
-      <div class="wrapper">
+      <div id="wrapper" class="wrapper">
           <div class="graph-buttons">
-              <button onclick="handleClick(this)" class="population">Population</button>
-              <button onclick="handleClick(this)" class="languages">Languages</button>
+            <button onclick="handleClick(this)" class="population">Population</button>
+            <button onclick="handleClick(this)" class="languages">Languages</button>
+            <a href="#countries" class="go-up"><i class="fas fa-arrow-up"></i></a>
           </div>
           <h4 class="graph-title"></h4>
           <div class="graphs-container">
