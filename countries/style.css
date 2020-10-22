@@ -183,7 +183,8 @@ form > button{
 }
 a{
   font-size: 3rem;
-  color: rgb(233, 127, 52);;
+  color: rgb(233, 127, 52);
+  text-decoration: none;
 }
 .go-up{
   float: right;
