@@ -121,6 +121,11 @@ displayCountries=list=>
     ul.appendChild(li)
 
     li=document.createElement('li')
+    li.className='currency'
+    li.innerHTML='Currency: '+country.currency
+    ul.appendChild(li)
+
+    li=document.createElement('li')
     li.className='population'
     li.innerHTML='Population: '+country.population.toLocaleString()
     ul.appendChild(li)
@@ -213,7 +218,12 @@ handleSelect=()=>{
   sortBy=e.value
   let sortResults = searchSort(results,searchQuery,sortBy)
   searchCon.innerHTML=''
-  displayCountries(sortResults)
+  if(searchQuery!==''){
+    displayCountries(sortResults)
+  }
+  else{
+    displayCountries(countries)    
+  }
 }
 
 displayCountries(countries)
