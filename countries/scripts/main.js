@@ -1,8 +1,5 @@
 let searchCon=document.querySelector('.cards-list')
-// "name", "capital", "languages", 
-// "population", "flag", "currency"
 
-//sort data by country population
 document.querySelector('.subtitle').innerHTML=`Currently, we have ${countries.length} countries`
 countries.sort((a,b)=>{
   let keyA=a.population,

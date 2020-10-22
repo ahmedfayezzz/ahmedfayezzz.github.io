@@ -41,7 +41,6 @@ body{
   text-align: center;
   margin-left: 15%;
   margin-right: 15%;
-  /* color: white; */
   background-color: hsla(0, 0%, 86%, 0.65)
 }
 button{
@@ -125,10 +124,6 @@ form > button{
   background-color: rgb(243, 243, 243);
   border:1px solid #dcdcdc;
 }
-/* form > button{
-  margin-top: 0.5rem;
-  border-radius: 5%;
-} */
 .sort-bar:hover{
   box-shadow: 1px 1px 8px 1px #d7d5ee;
 }
@@ -144,9 +139,6 @@ form > button{
   outline: none;
   background-color: inherit;
 }
-/* .sort-bar > option{
-  text-align: center;
-} */
 .cards-list{
   display: flex;
   flex-direction: row;
@@ -157,9 +149,6 @@ form > button{
   font-size: 0.8rem;
   background-color: rgb(245, 245, 245);
   margin: 1rem;
-  /* width: 30vw; */
-  /* display: flex; */
-  /* width: 100%; */
   flex: 0 1 250px;
 }
 .country-card:hover{
@@ -168,11 +157,9 @@ form > button{
 .country-card-ul{
   font-size: 0.8rem;
   display: flex;
-  /* grid-template-rows: repeat(autofill,1fr); */
   justify-content: space-between;
   width: 100%; 
   height: 100%;
-  /* flex: 0 1 300px; */
   padding: 0.5rem;
 }
 .country-card-ul > li{
@@ -210,8 +197,6 @@ a{
     
     margin-left: 0;
     margin-right: 0;
-    /* color: white; */
-    /* background-color: hsla(0, 0%, 86%, 0.65) */
   }
 }
 @media (max-width:425px){
