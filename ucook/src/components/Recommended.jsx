@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { fetchRandom } from "./../redux/receipt/random/randomActions";
 import { useEffect } from "react";
 import { v4 as uuid } from 'uuid';
-
+import CardMaterial from './CardMaterial';
 
 const Recommended = ({ randomData, fetchRandom }) => {
   useEffect(() => {
@@ -14,8 +14,7 @@ const Recommended = ({ randomData, fetchRandom }) => {
       }
     }
   }, []);
-  const Cards = randomData.random.map((receipt)=><Card key={uuid()} receipt={receipt}/>);
-  // console.log(randomData);
+  const Cards = randomData.random.map((receipt)=><CardMaterial key={uuid()} receipt={receipt.meals[0]}/>);
   const CardContainer = styled.div`
     display: flex;
     flex-wrap: wrap;

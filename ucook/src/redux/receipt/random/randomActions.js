@@ -10,10 +10,10 @@ const fetchRandomRequest=()=>{
   }
 }
 
-const fetchRandomSuccess=(users)=>{
+const fetchRandomSuccess=(recipes)=>{
   return{
     type:FETCH_RANDOM_SUCCESS,
-    payload:users
+    payload:recipes
   }
 }
 

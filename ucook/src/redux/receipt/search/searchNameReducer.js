@@ -1,31 +1,30 @@
-import {FETCH_RECEIPT_REQUEST,FETCH_RECEIPT_FAILURE,FETCH_RECEIPT_SUCCESS} from './actionTypes'
-
+import {SEARCH_NAME_REQUEST,SEARCH_NAME_SUCCESS,SEARCH_NAME_FAILURE} from './actionTypes'
 
 const initialState={
   loading:true,
-  receipts:[],
+  random:[],
   error:''
 }
 
-const receiptReducer=(state=initialState,action)=>{
+const searchNameReducer=(state=initialState,action)=>{
   switch (action.type) {
-    case FETCH_RECEIPT_REQUEST:
+    case SEARCH_NAME_REQUEST:
       return{
         ...state,
           loading:true
       }
-    case FETCH_RECEIPT_SUCCESS:
+    case SEARCH_NAME_SUCCESS:
       return{
         ...state,
           loading:false,
-          receipts:action.payload,
+          random:action.payload,
           error:''
       }
-    case FETCH_RECEIPT_FAILURE:
+    case SEARCH_NAME_FAILURE:
       return{
         ...state,
           loading:false,
-          receipts:[],
+          random:[],
           error:action.payload
       }
   
@@ -33,4 +32,4 @@ const receiptReducer=(state=initialState,action)=>{
   }
 }
 
-export default receiptReducer
+export default searchNameReducer

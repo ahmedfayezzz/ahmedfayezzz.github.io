@@ -1,12 +1,25 @@
 import {combineReducers} from 'redux'
 
-// import receiptReducer from './receipt/receiptReducer';
 import randomReducer from './receipt/random/randomReducer';
+import allAreasReducer from './receipt/area/allAreasReducer';
+import areaReducer from './receipt/area/areaReducer';
+import allCategoriesReducer from './receipt/category/allCategoriesReducer';
+import categoryReducer from './receipt/category/categoryReducer';
+import allIngredientsReducer from './receipt/ingredient/allIngredientsReducer';
+import ingredientReducer from './receipt/ingredient/ingredientReducer';
+import searchNameReducer from './receipt/search/searchNameReducer';
+import searchIDReducer from './receipt/search/searchIDReducer';
 
-
-const rootReducer =combineReducers({
-  // receipt:Reducer,
-  random:randomReducer
+const rootReducer = combineReducers({
+  random:randomReducer,
+  areas:allAreasReducer,
+  areaFilter:areaReducer,
+  categories:allCategoriesReducer,
+  categoryFilter:categoryReducer,
+  ingredients:allIngredientsReducer,
+  ingredientFilter:ingredientReducer,
+  searchName:searchNameReducer,
+  searchID:searchIDReducer
 })
 
 export default rootReducer

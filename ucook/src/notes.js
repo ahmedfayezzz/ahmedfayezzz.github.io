@@ -29,5 +29,7 @@
 }
 
 // search for meals by name
+('https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata')
 
 // search for meals by available ingredients
+('https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast')
