@@ -74,14 +74,13 @@ const NavBar = () => {
     fontWeight: "bold",
     color: 'var(--primary)'
   }
-  console.log(sideBar);
   return ( 
     <div>
 
       <Nav>
-        <Link><IMG src={logo}/></Link>
+        <Link to='/home'><IMG src={logo}/></Link>
 
-        <BUTTON onClick={()=>setSideBar(!sideBar)}> <i class="fas fa-bars"></i></BUTTON>
+        <BUTTON onClick={()=>setSideBar(!sideBar)}> <i className="fas fa-bars"></i></BUTTON>
         <UL>
           <LI>
             <NavLink 

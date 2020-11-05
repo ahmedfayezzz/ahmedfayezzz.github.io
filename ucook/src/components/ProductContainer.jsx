@@ -1,30 +1,30 @@
 import React,{useEffect} from 'react';
 import {connect} from 'react-redux'
-import { fetchProduct } from '../redux';
+import { fetchReceipt } from '../redux';
 
-const ProductContainer = ({productData,fetchProduct}) => {
+const ReceiptContainer = ({receiptData: receiptData,fetchReceipt}) => {
   useEffect(()=>{
-    fetchProduct()
+    fetchReceipt()
   },[])
-  return productData.loading ?(
+  return receiptData.loading ?(
     <h1>loading.....</h1>
-  ): productData.error ? (
-    <h1>{productData.error}</h1>
+  ): receiptData.error ? (
+    <h1>{receiptData.error}</h1>
   ):(
     <ul>
-      {productData.products.map((product)=><li>{product.name}</li>)}
+      {receiptData.receipt.map((receipt)=><li>{receipt.name}</li>)}
     </ul>
   )
 }
 const mapStateToProps=state=>{
   return{
-    productData:state.products
+    receiptData:state.receipt
   }
 }
 const mapDispatchToProps=dispatch=>{
   return{
-    fetchProduct:()=>dispatch(fetchProduct())
+    fetchReceipt:()=>dispatch(fetchReceipt())
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(ProductContainer);
+export default connect(mapStateToProps,mapDispatchToProps)(ReceiptContainer);

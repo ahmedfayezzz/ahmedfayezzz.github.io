@@ -1,9 +1,12 @@
 import {combineReducers} from 'redux'
 
-import productReducer from './product/productReducer';
+// import receiptReducer from './receipt/receiptReducer';
+import randomReducer from './receipt/random/randomReducer';
+
 
 const rootReducer =combineReducers({
-  products:productReducer
+  // receipt:Reducer,
+  random:randomReducer
 })
 
 export default rootReducer

@@ -1,31 +1,31 @@
-import {FETCH_PRODUCT_REQUEST,FETCH_PRODUCT_FAILURE,FETCH_PRODUCT_SUCCESS} from './actionTypes'
+import {FETCH_RECEIPT_REQUEST,FETCH_RECEIPT_FAILURE,FETCH_RECEIPT_SUCCESS} from './actionTypes'
 
 
 const initialState={
   loading:true,
-  products:[],
+  receipts:[],
   error:''
 }
 
-const productReducer=(state=initialState,action)=>{
+const receiptReducer=(state=initialState,action)=>{
   switch (action.type) {
-    case FETCH_PRODUCT_REQUEST:
+    case FETCH_RECEIPT_REQUEST:
       return{
         ...state,
           loading:true
       }
-    case FETCH_PRODUCT_SUCCESS:
+    case FETCH_RECEIPT_SUCCESS:
       return{
         ...state,
           loading:false,
-          products:action.payload,
+          receipts:action.payload,
           error:''
       }
-    case FETCH_PRODUCT_FAILURE:
+    case FETCH_RECEIPT_FAILURE:
       return{
         ...state,
           loading:false,
-          products:[],
+          receipts:[],
           error:action.payload
       }
   
@@ -33,4 +33,4 @@ const productReducer=(state=initialState,action)=>{
   }
 }
 
-export default productReducer
+export default receiptReducer
