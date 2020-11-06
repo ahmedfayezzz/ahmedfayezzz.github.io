@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Recommended from './Recommended';
+import SearchBar  from "./SearchBar";
 const Home = () => {
   const H1=styled.h1`
     text-align:center;
@@ -8,6 +9,7 @@ const Home = () => {
   `
   return ( 
     <>
+      <SearchBar/>
       <H1>Recommended</H1>
       <Recommended/>
     </>
