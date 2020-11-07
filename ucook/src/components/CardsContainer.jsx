@@ -16,31 +16,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Recommended = ({ randomData, fetchRandom }) => {
+const CardContainer = ({ name, recipes }) => {
   const classes = useStyles();
-  useEffect(() => {
-    if (randomData.first) {
-      for (let i = 0; i < 5; i++) {
-        fetchRandom();
-      }
-    }
-  }, []);
-  const Cards = randomData.random.map((receipt)=><CardMaterial key={uuid()} receipt={receipt.meals[0]}/>);
-  const CardContainer = styled.div`
+  
+  const Cards = recipes.map((recipe)=><h1 key={uuid()}>{recipe.strMeal}</h1>);
+  const CardDiv = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content:center;
   `;
-  return randomData.loading===true ?(
-    <div className={classes.root}>
-      <CircularProgress size='4rem'/>
-    </div>
-  )
-  :(
-    <CardContainer>
+  return (
+    <CardDiv>
       {Cards}
-    </CardContainer>
+    </CardDiv>
   )
+  
 };
 const mapStateToProps = (state) => {
   return {
@@ -53,4 +43,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Recommended);
+export default connect(mapStateToProps, mapDispatchToProps)(CardContainer);

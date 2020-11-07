@@ -2,36 +2,45 @@
 import React, { useEffect } from 'react';
 import Chip from '@material-ui/core/Chip';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles,styled } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { fetchAllIngredients} from "../redux";
 import { connect } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 500,
-    '& > * + *': {
-      marginTop: theme.spacing(3),
-    },
+    width:' 90%',
+    maxWidth:600,
+    margin: '1rem auto',
+    
   },
+  textField:{
+    outline:'#4AB07B',
+    background:'black',
+    color:'red'
+  }
 }));
+const styledTextField=styled(TextField)`
+  
+`
 
 const SearchBar=({ingredients,fetchIngredients})=>{
   const classes = useStyles();
   const ingredientsList=ingredients.ingredients.meals
   useEffect(()=>{
-    fetchIngredients()
+    if(!ingredientsList)
+      fetchIngredients()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
-  console.log(ingredients);
+  // console.log(ingredients);
   return (
     <div className={classes.root}>
       <Autocomplete
         multiple
         id="tags-outlined"
-        options={ingredients.loading===true ? 'loading...':ingredientsList}
-        getOptionLabel={ingredients.loading===true?'loading...':(option) => option.strIngredient}
-        defaultValue={ingredients.loading===true?[]:[ingredientsList[13]]}
+        options={ingredients.loading===true ? []:ingredientsList}
+        getOptionLabel={ingredients.loading===true?()=>{}:(option) => option.strIngredient}
+        // defaultValue={ingredients.loading===true?[]:[ingredientsList[13]]}
         filterSelectedOptions
         renderInput={(params) => (
           <TextField
@@ -39,6 +48,7 @@ const SearchBar=({ingredients,fetchIngredients})=>{
             variant="outlined"
             label="Select your ingredients"
             placeholder="Ingredients"
+            color="primary"
           />
         )}
       />

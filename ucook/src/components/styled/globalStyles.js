@@ -43,6 +43,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
   line-height: 1;
+  /* text-align:center; */
   /* background-color:#88BDA2; */
 }
 ol, ul {

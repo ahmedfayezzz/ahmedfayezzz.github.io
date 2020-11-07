@@ -7,8 +7,8 @@ const initialState={
   error:''
 }
 
-const ingredientReducer=(state=initialState,action)=>{
-  switch (action.type) {
+  const ingredientReducer=(state=initialState,action)=>{
+    switch (action.type) {
     case FILTER_INGREDIENT_REQUEST:
       return{
         ...state,

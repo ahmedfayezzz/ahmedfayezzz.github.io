@@ -65,7 +65,7 @@ const filterIngredientFailure=(error)=>{
 export const filterByIngredient=(ingredient)=>{
   return (dispatch)=>{
     dispatch(filterIngredientRequest())
-    axios.get(filterIngredient+ingredient)
+    axios.get(`${filterIngredient}${ingredient}`)
       .then((response)=>{
         const data=response.data
         dispatch(filterIngredientSuccess(data))

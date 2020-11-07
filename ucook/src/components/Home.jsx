@@ -6,11 +6,12 @@ const Home = () => {
   const H1=styled.h1`
     text-align:center;
     font-size:2rem;
+    margin:1rem auto;
   `
   return ( 
     <>
       <SearchBar/>
-      <H1>Recommended</H1>
+      <H1>Selection of the day</H1>
       <Recommended/>
     </>
    );
