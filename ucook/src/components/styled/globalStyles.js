@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
+  box-sizing: border-box;
 }
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -46,13 +47,13 @@ body {
   /* text-align:center; */
   /* background-color:#88BDA2; */
 }
-ol, ul {
+/* ol, ul {
 	list-style: none;
-}
+} */
 .MuiCardHeader-title{
   white-space:nowrap; 
-overflow:hidden;
-text-overflow:ellipsis;
+  overflow:hidden;
+  text-overflow:ellipsis;
 
 
 }

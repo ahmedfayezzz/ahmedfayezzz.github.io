@@ -25,7 +25,7 @@ const Recommended = ({ randomData, fetchRandom }) => {
       }
     }
   }, []);
-  const Cards = randomData.random.map((receipt)=><CardMaterial key={uuid()} receipt={receipt.meals[0]}/>);
+  const Cards = randomData.random.map((recipe)=><CardMaterial key={uuid()} recipe={recipe.meals[0]}/>);
   const CardContainer = styled.div`
     display: flex;
     flex-wrap: wrap;

@@ -1,7 +1,8 @@
 import {Provider} from 'react-redux'
 import { Switch,Route,BrowserRouter as Router,Redirect } from "react-router-dom"
 import '../node_modules/@fortawesome/fontawesome-free/css/all.css'
-import { ThemeProvider,createMuiTheme } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/core";
+import { unstable_createMuiStrictModeTheme as createMuiTheme } from '@material-ui/core';
 
 // import ProductContainer from './components/ProductContainer'
 import store from './redux/store';

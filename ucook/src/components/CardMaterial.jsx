@@ -18,6 +18,8 @@ import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Chip from "@material-ui/core/Chip";
+import Tooltip from '@material-ui/core/Tooltip';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CardMaterial({ receipt: recipe }) {
+export default function CardMaterial({ recipe }) {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
 
@@ -60,8 +62,6 @@ export default function CardMaterial({ receipt: recipe }) {
 
   while (recipe["strIngredient" + ingredientIndex]) {
     ingredients.push(recipe["strIngredient" + ingredientIndex]);
-    // console.log('strIngredient'+ingredientIndex.toString());
-
     ingredientIndex += 1;
   }
   const ingredientLinks = ingredients.slice(0, 6).map((ingredient) => {
@@ -85,7 +85,7 @@ export default function CardMaterial({ receipt: recipe }) {
   // console.log(ingredientLinks);
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} style={{display:'flex', flexDirection:'column'}}>
       <CardHeader
         // avatar={
         //   <Avatar aria-label="recipe" className={classes.avatar}>
@@ -98,13 +98,15 @@ export default function CardMaterial({ receipt: recipe }) {
         //   </IconButton>
         // }
         title={
-          <Link
-            key={uuid()}
-            style={{ color: "inherit", textDecoration: "none" }}
-            to={`/recipes/${recipe.idMeal}`}
-          >
-            {recipe.strMeal}
-          </Link>
+          <Tooltip title={recipe.strMeal}>
+            <Link
+              key={uuid()}
+              style={{ color: "inherit", textDecoration: "none" }}
+              to={`/recipes/${recipe.idMeal}`}
+            >
+              {recipe.strMeal}
+            </Link>
+          </Tooltip>
         }
         subheader={
           <div>
@@ -140,7 +142,7 @@ export default function CardMaterial({ receipt: recipe }) {
           guests. Add 1 cup of frozen peas along with the mussels, if you like.
         </Typography> */}
       </CardContent>
-      <CardActions disableSpacing>
+      <CardActions disableSpacing style={{marginTop:'auto'}}>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
