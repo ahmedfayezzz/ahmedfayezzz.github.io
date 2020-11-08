@@ -34,7 +34,8 @@ const NavBar = () => {
     flex-direction: column;
     justify-content: center;
     height: 50px;
-    width: 5rem;
+    /* width: 5rem; */
+    padding:0 1rem;
     text-align: center;
     transition: 0.3s;
     &:hover {

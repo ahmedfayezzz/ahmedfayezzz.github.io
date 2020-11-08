@@ -49,5 +49,12 @@ body {
 ol, ul {
 	list-style: none;
 }
+.MuiCardHeader-title{
+  white-space:nowrap; 
+overflow:hidden;
+text-overflow:ellipsis;
+
+
+}
 `
 export default GlobalStyle

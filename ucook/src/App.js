@@ -14,17 +14,16 @@ import GlobalStyle from './components/styled/globalStyles';
 import Categories from './components/Categories';
 import Areas from './components/Areas';
 import IngredientDetails from './components/IngredientDetails';
+import RecipeDetails from './components/RecipeDetails'
 const theme = createMuiTheme({
   palette: {
     primary: {
-      // Purple and green play nicely together.
       main: '#4AB07B',
     },
     secondary: {
-      // This is green.A700 as hex.
-      main: '#11cb5f',
+      main: '#009688',
     },
-  },
+  }
 });
 
 function App() {
@@ -42,10 +41,15 @@ function App() {
               <Route path="/areas"  component={Areas}/>
               <Route path="/about"  component={About}/>
               <Route
-              path="/ingredients/:name"
-              
-              component={IngredientDetails}
-            />
+                path="/ingredients/:name"
+                
+                component={IngredientDetails}
+              />
+              <Route
+                path="/recipes/:id/:name?"
+                
+                component={RecipeDetails}
+              />
               <Route path="/notfound"  component={NotFound} />
               <Redirect to="/notfound" />
             </Switch>

@@ -33,6 +33,9 @@ const SearchBar=({ingredients,fetchIngredients})=>{
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   // console.log(ingredients);
+  const handleChange=e=>{
+    console.log(e.target.value)
+  }
   return (
     <div className={classes.root}>
       <Autocomplete
@@ -49,6 +52,7 @@ const SearchBar=({ingredients,fetchIngredients})=>{
             label="Select your ingredients"
             placeholder="Ingredients"
             color="primary"
+            onChange={handleChange}
           />
         )}
       />

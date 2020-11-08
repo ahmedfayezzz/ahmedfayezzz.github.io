@@ -1,94 +1,131 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { v4 as uuid } from 'uuid';
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Chip from '@material-ui/core/Chip';
-
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { v4 as uuid } from "uuid";
+import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import Collapse from "@material-ui/core/Collapse";
+import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import { red } from "@material-ui/core/colors";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import ShareIcon from "@material-ui/icons/Share";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
+import Chip from "@material-ui/core/Chip";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
-    margin:'1rem',
-    backgroundColor:'#ffffff',
+    margin: "1rem",
+    backgroundColor: "#ffffff",
   },
-  Card:{
+  Card: {
     // width:'30%'
   },
   media: {
     height: 0,
-    paddingTop: '56.25%', // 16:9
-    
+    paddingTop: "56.25%", // 16:9
   },
   expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
+    transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
       duration: theme.transitions.duration.shortest,
     }),
   },
   expandOpen: {
-    transform: 'rotate(180deg)',
+    transform: "rotate(180deg)",
   },
   avatar: {
     backgroundColor: red[500],
   },
 }));
 
-export default function CardMaterial({receipt: recipe}) {
+export default function CardMaterial({ receipt: recipe }) {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  let ingredientIndex=1
-  let ingredients=[]
+  let ingredientIndex = 1;
+  let ingredients = [];
   // console.log(recipe);
-  
-  while(recipe['strIngredient'+ingredientIndex]){
-    ingredients.push(recipe['strIngredient'+ingredientIndex])
+
+  while (recipe["strIngredient" + ingredientIndex]) {
+    ingredients.push(recipe["strIngredient" + ingredientIndex]);
     // console.log('strIngredient'+ingredientIndex.toString());
 
-    ingredientIndex+=1
-
+    ingredientIndex += 1;
   }
-  const ingredientLinks=ingredients.slice(0,6).map(ingredient=>{
-    return(
-      <Link key={uuid()} to={`/ingredients/${ingredient}`}><Chip label={ingredient} /></Link>
-    )
-  })
+  const ingredientLinks = ingredients.slice(0, 6).map((ingredient) => {
+    return (
+      <Chip
+        key={uuid()}
+        color="secondary"
+        style={{ margin: "3px" }}
+        label={
+          <Link
+            key={uuid()}
+            style={{ color: "inherit", textDecoration: "none" }}
+            to={`/ingredients/${ingredient}`}
+          >
+            {ingredient}
+          </Link>
+        }
+      />
+    );
+  });
   // console.log(ingredientLinks);
-  
+
   return (
     <Card className={classes.root}>
       <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            R
-          </Avatar>
+        // avatar={
+        //   <Avatar aria-label="recipe" className={classes.avatar}>
+        //     R
+        //   </Avatar>
+        // }
+        // action={
+        //   <IconButton aria-label="settings">
+        //     <MoreVertIcon />
+        //   </IconButton>
+        // }
+        title={
+          <Link
+            key={uuid()}
+            style={{ color: "inherit", textDecoration: "none" }}
+            to={`/recipes/${recipe.idMeal}`}
+          >
+            {recipe.strMeal}
+          </Link>
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
+        subheader={
+          <div>
+            <Link
+              key={uuid()}
+              style={{ color: "inherit" }}
+              to={`/ingredients/${recipe.strCategory}`}
+            >
+              {recipe.strCategory}
+            </Link>
+            {` - `}
+            <Link
+              key={uuid()}
+              style={{ color: "inherit" }}
+              to={`/ingredients/${recipe.strArea}`}
+            >
+              {recipe.strArea}
+            </Link>
+          </div>
         }
-        title={recipe.strMeal}
-        subheader={recipe.strCategory+', '+ recipe.strArea}
+        subheader2={recipe.strArea}
       />
       <CardMedia
         className={classes.media}

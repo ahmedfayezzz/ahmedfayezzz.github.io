@@ -20,7 +20,7 @@ const Recommended = ({ randomData, fetchRandom }) => {
   const classes = useStyles();
   useEffect(() => {
     if (randomData.first) {
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 6; i++) {
         fetchRandom();
       }
     }

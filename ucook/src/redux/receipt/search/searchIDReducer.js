@@ -2,7 +2,7 @@ import {SEARCH_ID_REQUEST,SEARCH_ID_SUCCESS,SEARCH_ID_FAILURE} from './actionTyp
 
 const initialState={
   loading:true,
-  random:[],
+  recipe:[],
   error:''
 }
 
@@ -17,14 +17,14 @@ const searchIDReducer=(state=initialState,action)=>{
       return{
         ...state,
           loading:false,
-          random:action.payload,
+          recipe:action.payload,
           error:''
       }
     case SEARCH_ID_FAILURE:
       return{
         ...state,
           loading:false,
-          random:[],
+          recipe:[],
           error:action.payload
       }
   
