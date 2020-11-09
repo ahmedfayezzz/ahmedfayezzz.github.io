@@ -89,19 +89,25 @@ const RecipeDetails = (props) => {
       measures.push(recipe["strMeasure" + measureIndex]);
       measureIndex += 1;
     }
-    instructions = recipe.strInstructions.split("\r");
-    instructionsList = instructions.map((instruction) => (
-      <LI key={uuid()}>
-        {instruction}
-        <br/>
-        <br/>
-      </LI>
+    instructions = recipe.strInstructions.split('\r\n');
+    instructionsList = instructions.map((instruction) => {
+      if(instruction){  
+        return(
+          <LI key={uuid()}>
+            {instruction}
+            <br/>
+            <br/>
+          </LI>
+        )
+      }
+    }
       
-    ));
+      
+    );
   }
 
   // console.log(instructionsList);
-  // console.log(measures);
+  console.log(instructions);
   return recipeData.loading === true ? (
     <div className={classes.root}>
       <CircularProgress size="4rem" />
@@ -152,7 +158,7 @@ const RecipeDetails = (props) => {
             src={recipe.strYoutube.replace('watch?v=','embed/')} 
             frameBorder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen> 
+            allowFullScreen> 
             </iframe>)}
         </Grid>
       </Grid>

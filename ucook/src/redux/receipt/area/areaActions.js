@@ -42,37 +42,37 @@ export const fetchAllAreas=()=>{
 }
 
 //filter recipes by category
-const filterCategoryRequest=()=>{
+const filterAreaRequest=()=>{
   return{
     type:FILTER_AREA_REQUEST
   }
 }
 
-const filterCategorySuccess=(recipes)=>{
+const filterAreaSuccess=(recipes)=>{
   return{
     type:FILTER_AREA_SUCCESS,
     payload:recipes
   }
 }
 
-const filterCategoryFailure=(error)=>{
+const filterAreaFailure=(error)=>{
   return{
     type:FILTER_AREA_FAILURE,
     payload:error
   }
 }
 
-export const filterByCategory=(area)=>{
+export const filterByArea=(area)=>{
   return (dispatch)=>{
-    dispatch(filterCategoryRequest())
+    dispatch(filterAreaRequest())
     axios.get(filterArea+area)
       .then((response)=>{
         const data=response.data
-        dispatch(filterCategorySuccess(data))
+        dispatch(filterAreaSuccess(data))
       })
       .catch((error)=>{
         const errorMSG=error.message
-        dispatch(filterCategoryFailure(errorMSG))
+        dispatch(filterAreaFailure(errorMSG))
       })
   }
 }

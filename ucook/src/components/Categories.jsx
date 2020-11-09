@@ -6,28 +6,45 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { fetchAllCategories} from "../redux";
 import { connect } from "react-redux";
-
+import CategoryOverview from './CategoryOverview';
+import {v4 as uuid} from 'uuid'
+import CircularProgress  from '@material-ui/core/CircularProgress';
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 500,
+    padding:'1rem',
     '& > * + *': {
       marginTop: theme.spacing(3),
     },
+    display:'flex',
+    flexDirection:'column',
+    alignItems:'center',
+    color:'var(--primary)'
   },
 }));
 
-const Categories=({categories,fetchCategories})=>{
+const Categories=({categoriesData,fetchCategories})=>{
   const classes = useStyles();
-  const categoriesList=categories.categories.meals
+  const categoriesList=categoriesData.categories.meals
   useEffect(()=>{
     if(!categoriesList)
       fetchCategories()
     
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
-  console.log(categories);
-  return (
+  let categoriesLinks
+  if(!categoriesData.loading){
+    categoriesLinks=categoriesList.map(category=>(
+      <CategoryOverview key={uuid()} name={category.strCategory}/>
+    ))
+  }
+  // console.log(categoriesLinks);
+  return categoriesData.loading === true ? (
     <div className={classes.root}>
+      <CircularProgress size="4rem" />
+    </div>
+  ) : (
+    <div className={classes.root}>
+      {categoriesLinks}
       {/* <Autocomplete
         multiple
         id="tags-outlined"
@@ -50,7 +67,7 @@ const Categories=({categories,fetchCategories})=>{
 
 const mapStateToProps = (state) => {
   return {
-    categories: state.categories
+    categoriesData: state.categories
   };
 };
 const mapDispatchToProps = (dispatch) => {

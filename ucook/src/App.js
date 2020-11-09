@@ -16,6 +16,7 @@ import Categories from './components/Categories';
 import Areas from './components/Areas';
 import IngredientDetails from './components/IngredientDetails';
 import RecipeDetails from './components/RecipeDetails'
+import CategoryDetails from './components/CategoryDetails';
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -38,8 +39,8 @@ function App() {
             <Switch>
               <Redirect exact from="/ "to="/home" />
               <Route path="/home"  component={Home} />
-              <Route path="/categories"  component={Categories}/>
-              <Route path="/areas"  component={Areas}/>
+              <Route path="/categories"  exact component={Categories}/>
+              <Route path="/areas"  exact component={Areas}/>
               <Route path="/about"  component={About}/>
               <Route
                 path="/ingredients/:name"
@@ -50,6 +51,11 @@ function App() {
                 path="/recipes/:id/:name?"
                 
                 component={RecipeDetails}
+              />
+              <Route
+                path="/categories/:name"
+                
+                component={CategoryDetails}
               />
               <Route path="/notfound"  component={NotFound} />
               <Redirect to="/notfound" />

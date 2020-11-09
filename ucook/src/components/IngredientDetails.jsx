@@ -20,6 +20,7 @@ const IngredientDetails = (props) => {
   useEffect(()=>{
     filterIngredient(name.replaceAll(' ','_').toLowerCase())
   },[])
+  // console.log(ingredientsData);
   return ingredientsData.loading===true ?(
     <div className={classes.root}>
       <CircularProgress size='4rem'/>
@@ -29,7 +30,7 @@ const IngredientDetails = (props) => {
     <CardContainer name={name} recipes={ingredientsData.recipes.meals}/>
   );
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => { 
   return {
     ingredientsData: state.ingredientFilter
   };
