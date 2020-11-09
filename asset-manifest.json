@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.js": "/ucook/static/js/main.0c7198e1.chunk.js",
+    "main.js.map": "/ucook/static/js/main.0c7198e1.chunk.js.map",
+    "runtime-main.js": "/ucook/static/js/runtime-main.65e5e4d2.js",
+    "runtime-main.js.map": "/ucook/static/js/runtime-main.65e5e4d2.js.map",
+    "static/css/2.d1555303.chunk.css": "/ucook/static/css/2.d1555303.chunk.css",
+    "static/js/2.0622fe6e.chunk.js": "/ucook/static/js/2.0622fe6e.chunk.js",
+    "static/js/2.0622fe6e.chunk.js.map": "/ucook/static/js/2.0622fe6e.chunk.js.map",
+    "static/js/3.627539d5.chunk.js": "/ucook/static/js/3.627539d5.chunk.js",
+    "static/js/3.627539d5.chunk.js.map": "/ucook/static/js/3.627539d5.chunk.js.map",
+    "index.html": "/ucook/index.html",
+    "static/css/2.d1555303.chunk.css.map": "/ucook/static/css/2.d1555303.chunk.css.map",
+    "static/js/2.0622fe6e.chunk.js.LICENSE.txt": "/ucook/static/js/2.0622fe6e.chunk.js.LICENSE.txt",
+    "static/media/all.css": "/ucook/static/media/fa-solid-900.46fdbd2d.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.65e5e4d2.js",
+    "static/css/2.d1555303.chunk.css",
+    "static/js/2.0622fe6e.chunk.js",
+    "static/js/main.0c7198e1.chunk.js"
+  ]
+}
