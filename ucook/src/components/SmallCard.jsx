@@ -23,10 +23,12 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width:'15vw',
-    minWidth: 140,
+    width:'10vw',
+    minWidth: 150,
     margin: "1rem",
     backgroundColor: "#ffffff",
+    boxShadow:'unset',
+    position:'relative'
   },
   Card: {
     width:'30%'
@@ -47,6 +49,15 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     backgroundColor: red[500],
+  },
+  CardHeader:{
+    textAlign:'center',
+    position:'absolute',
+    width:'100%',
+    height:'100%',
+    color:'white',
+    // opacity:''
+    backgroundColor:'rgba(15, 15, 15, 0.753)'
   }
 }));
 
@@ -83,23 +94,22 @@ export default function SmallCard({ recipe }) {
       />
     );
   });
+  let recipeTitle=recipe.strMeal
+  recipeTitle =recipe.strMeal.length>20? `${recipeTitle.slice(0,15)}...`:recipeTitle
   // console.log(ingredientLinks);
 
   return (
     <Card className={classes.root} style={{display:'flex', flexDirection:'column'}}>
+      
+      <CardMedia
+        className={classes.media}
+        image={recipe.strMealThumb}
+        title={recipe.strMeal}
+      />
       <CardHeader
-        // className={classes.CardHeader}
-        titleTypographyProps={{variant:'body1'}}
-        // avatar={
-        //   <Avatar aria-label="recipe" className={classes.avatar}>
-        //     R
-        //   </Avatar>
-        // }
-        // action={
-        //   <IconButton aria-label="settings">
-        //     <MoreVertIcon />
-        //   </IconButton>
-        // }
+        style={{padding:'0'}}
+        className={classes.CardHeader}
+        titleTypographyProps={{variant:'body2'}}
         title={
           <Tooltip title={recipe.strMeal}>
             <Link
@@ -107,39 +117,15 @@ export default function SmallCard({ recipe }) {
               style={{ color: "inherit", textDecoration: "none" }}
               to={`/recipes/${recipe.idMeal}`}
             >
-              {recipe.strMeal}
+              {recipeTitle}
             </Link>
           </Tooltip>
         }
-        // subheader={
-        //   <div>
-        //     <Link
-        //       key={uuid()}
-        //       style={{ color: "inherit" }}
-        //       to={`/ingredients/${recipe.strCategory}`}
-        //     >
-        //       {recipe.strCategory}
-        //     </Link>
-        //     {` - `}
-        //     <Link
-        //       key={uuid()}
-        //       style={{ color: "inherit" }}
-        //       to={`/ingredients/${recipe.strArea}`}
-        //     >
-        //       {recipe.strArea}
-        //     </Link>
-        //   </div>
-        // }
-      />
-      <CardMedia
-        className={classes.media}
-        image={recipe.strMealThumb}
-        title={recipe.strMeal}
       />
       {/* <CardContent>
         {ingredientLinks}
       </CardContent> */}
-      <CardActions disableSpacing style={{marginTop:'auto'}}>
+      {/* <CardActions disableSpacing style={{marginTop:'auto'}}>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
@@ -156,7 +142,7 @@ export default function SmallCard({ recipe }) {
         >
           <ExpandMoreIcon />
         </IconButton>
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 }

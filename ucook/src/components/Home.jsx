@@ -1,20 +1,76 @@
-import React from 'react';
-import styled from 'styled-components';
-import Recommended from './Recommended';
-import SearchBar  from "./SearchBar";
-const Home = () => {
-  const H1=styled.h1`
-    text-align:center;
-    font-size:2rem;
-    margin:1rem auto;
-  `
-  return ( 
-    <>
-      <SearchBar/>
-      <H1>Selection of the day</H1>
-      <Recommended/>
-    </>
-   );
-}
- 
-export default Home;
+import { Typography } from "@material-ui/core";
+import React, { useState } from "react";
+import styled from "styled-components";
+import Recommended from "./Recommended";
+import SearchBar from "./SearchBar";
+import { makeStyles } from "@material-ui/core/styles";
+import { connect } from "react-redux";
+import { filterByNIngredient } from "../redux";
+import CardContainer from './CardsContainer';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    color: "#2e5247",
+  },
+}));
+const DIv = styled.div`
+  /* padding:0; */
+
+  /* background-color: #77aa77;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 2 1'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='0' x2='0' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%2377aa77'/%3E%3Cstop offset='1' stop-color='%234fd'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23cf8' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23cf8' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='c' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='2' y2='2'%3E%3Cstop offset='0' stop-color='%23cf8' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23cf8' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='0' y='0' fill='url(%23a)' width='2' height='1'/%3E%3Cg fill-opacity='0.5'%3E%3Cpolygon fill='url(%23b)' points='0 1 0 0 2 0'/%3E%3Cpolygon fill='url(%23c)' points='2 1 2 0 0 0'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+  padding-top: 2rem; */
+`;
+const Home = ({ recipes, filterIngredients }) => {
+  const classes = useStyles();
+  const [selectedIngrd, setSelectedIngrd] = useState([]);
+  const [btnDisabled, setbtnDisabled] = useState(true);
+  const [show, setSHow] = useState(false);
+  const findRecipes=(value)=>{
+    const ingredientsNames=value.map((ingredient)=>{
+      return ingredient.strIngredient
+    })
+    // console.log(ingredientsNames);
+    filterIngredients(ingredientsNames)
+    // console.log(allRecipes)
+  }
+  const handleChange = (e, value) => {
+    setSHow(false)
+    if (value.length === 0) {
+      setbtnDisabled(true);
+    } else {
+      setbtnDisabled(false);
+    }
+    setSelectedIngrd(value);
+    findRecipes(value)
+    // console.log(value);
+  };
+  const handleSubmit = () => {
+    setSHow(true)
+  };
+  return (
+    <DIv className={classes.root}>
+      <Typography style={{ paddingBottom: "1rem" }} variant="h5" align="center">
+        Enter available ingredients
+      </Typography>
+      <SearchBar handleSubmit={handleSubmit} handleChange={handleChange} btnDisapled={btnDisabled} />
+      {show? <CardContainer recipes={recipes.recipes}/>:''}
+      <Typography variant="h3" align="center">
+        Recommended
+      </Typography>
+      <Recommended />
+    </DIv>
+  );
+};
+const mapStateToProps = (state) => {
+  return {
+    recipes: state.NIngredientsFilter,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    filterIngredients: (names) => dispatch(filterByNIngredient(names)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

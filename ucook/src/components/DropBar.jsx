@@ -3,17 +3,15 @@ import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
 import "@fortawesome/fontawesome-free";
 
+const DropBar = (props) => {
+  const [barDisplay, setBarDisplay] = useState(`block`);
 
-const DropBar = () => {
   const DropDIV = styled.nav`
     background-color: #ffffff;
     position: fixed;
     width: 100%;
-    /* max-height:50px; */
-    /* justify-content:space-between;
-    align-items:center; */
+    display: ${barDisplay};
     box-shadow: 0 2px 3px -2px rgba(0, 0, 0, 0.2);
-    /* padding: 0 2vw; */
     z-index: 10;
     @media only screen and (min-width: 769px) {
       display: none;
@@ -25,9 +23,6 @@ const DropBar = () => {
     align-items: center;
     height: 100%;
     width: 100%;
-    /* @media only screen and (max-width: 768px) {
-      display:none;
-    } */
   `;
   const LI = styled.li`
     display: flex;
@@ -60,7 +55,7 @@ const DropBar = () => {
   };
   return (
     <DropDIV>
-      <UL>
+      <UL onClick={props.handleClick}>
         <LI>
           <NavLink style={NavLinkStyle} activeStyle={activeStyle} to="/home">
             Home
@@ -76,19 +71,15 @@ const DropBar = () => {
           </NavLink>
         </LI>
         <LI>
-          <NavLink
-            activeStyle={activeStyle}
-            style={NavLinkStyle}
-            to="/areas"
-          >
+          <NavLink activeStyle={activeStyle} style={NavLinkStyle} to="/areas">
             Areas
           </NavLink>
         </LI>
-        <LI>
+        {/* <LI>
           <NavLink activeStyle={activeStyle} style={NavLinkStyle} to="/about">
             About
           </NavLink>
-        </LI>
+        </LI> */}
       </UL>
     </DropDIV>
   );

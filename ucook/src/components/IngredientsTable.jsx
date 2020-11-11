@@ -18,6 +18,7 @@ const useStyles = makeStyles({
   container: {
     Width: '90%',
     maxHeight: 440,
+    backgroundColor:'rgba(255, 255, 255, 0.274)'
   },
 });
 

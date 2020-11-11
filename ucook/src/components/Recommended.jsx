@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Card from "./Card";
+import BigCard from "./BigCard";
 import { connect } from "react-redux";
 import { fetchRandom } from "./../redux/receipt/random/randomActions";
 import { useEffect } from "react";
@@ -7,7 +7,6 @@ import { v4 as uuid } from 'uuid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
 
-import CardMaterial from './CardMaterial';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,7 +24,7 @@ const Recommended = ({ randomData, fetchRandom }) => {
       }
     }
   }, []);
-  const Cards = randomData.random.map((recipe)=><CardMaterial key={uuid()} recipe={recipe.meals[0]}/>);
+  const Cards = randomData.random.map((recipe)=><BigCard key={uuid()} recipe={recipe.meals[0]}/>);
   const CardContainer = styled.div`
     display: flex;
     flex-wrap: wrap;

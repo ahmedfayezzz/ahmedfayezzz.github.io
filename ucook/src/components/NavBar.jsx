@@ -17,7 +17,7 @@ const NavBar = () => {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 3px -2px rgba(0, 0, 0, 0.2);
-    padding: 0 2vw;
+    /* padding: 0 2vw;  */
   `;
   const UL = styled.ul`
     display: flex;
@@ -35,7 +35,7 @@ const NavBar = () => {
     justify-content: center;
     height: 50px;
     /* width: 5rem; */
-    padding:0 1rem;
+    padding: 0 1rem;
     text-align: center;
     transition: 0.3s;
     &:hover {
@@ -69,6 +69,9 @@ const NavBar = () => {
     fontWeight: "bold",
     color: "var(--primary)",
   };
+  const handleClick=()=>{
+    setSideBar(!sideBar)
+  }
   return (
     <div>
       <Nav>
@@ -76,10 +79,10 @@ const NavBar = () => {
           <IMG src={logo} />
         </Link>
 
-        <BUTTON onClick={() => setSideBar(!sideBar)}>
-          
+        <BUTTON onClick={handleClick}>
           <i className="fas fa-bars"></i>
         </BUTTON>
+
         <UL>
           <LI>
             <NavLink style={NavLinkStyle} activeStyle={activeStyle} to="/home">
@@ -100,14 +103,14 @@ const NavBar = () => {
               Areas
             </NavLink>
           </LI>
-          <LI>
+          {/* <LI>
             <NavLink activeStyle={activeStyle} style={NavLinkStyle} to="/about">
               About
             </NavLink>
-          </LI>
+          </LI> */}
         </UL>
       </Nav>
-      {sideBar && <DropBar />}
+      {sideBar && <DropBar handleClick={handleClick}/>}
     </div>
   );
 };

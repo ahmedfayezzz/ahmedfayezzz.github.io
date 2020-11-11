@@ -1,33 +1,49 @@
 /* eslint-disable no-use-before-define */
-import React, { useEffect } from 'react';
-import Chip from '@material-ui/core/Chip';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import { fetchAllAreas} from "../redux";
+import React, { useEffect } from "react";
+import Chip from "@material-ui/core/Chip";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import { fetchAllAreas } from "../redux";
 import { connect } from "react-redux";
-
+import { CircularProgress } from "@material-ui/core";
+import Overview from "./Overview";
+import { v4 as uuid } from "uuid";
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 500,
-    '& > * + *': {
+    padding: "1rem",
+    "& > * + *": {
       marginTop: theme.spacing(3),
     },
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    color: "var(--primary)",
   },
 }));
 
-const Areas=({areas,fetchAreas})=>{
+const Areas = ({ areasData, fetchAreas }) => {
   const classes = useStyles();
-  const areasList=areas.areas.meals
-  useEffect(()=>{
-    if(!areasList)
-    fetchAreas()
-    
+  console.log(areasData);
+  const areasList = areasData.areas.meals;
+  useEffect(() => {
+    if (!areasList) fetchAreas();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
-  console.log(areas);
-  return (
+  }, []);
+  let areasLinks;
+  if (!areasData.loading) {
+    areasLinks = areasList.map((area) => (
+      <Overview key={uuid()} type="areas" name={area.strArea} />
+    ));
+  }
+  return areasData.loading === true ? (
     <div className={classes.root}>
+      <CircularProgress size="4rem" />
+    </div>
+  ) : (
+    <div className={classes.root}>
+      {areasLinks}
       {/* <Autocomplete
         multiple
         id="tags-outlined"
@@ -46,17 +62,17 @@ const Areas=({areas,fetchAreas})=>{
       /> */}
     </div>
   );
-}
+};
 
 const mapStateToProps = (state) => {
   return {
-    areas: state.areas
+    areasData: state.areas,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchAreas: () => dispatch(fetchAllAreas())
+    fetchAreas: () => dispatch(fetchAllAreas()),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Areas)
+export default connect(mapStateToProps, mapDispatchToProps)(Areas);

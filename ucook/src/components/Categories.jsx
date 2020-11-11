@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { fetchAllCategories} from "../redux";
 import { connect } from "react-redux";
-import CategoryOverview from './CategoryOverview';
+import Overview from './Overview';
 import {v4 as uuid} from 'uuid'
 import CircularProgress  from '@material-ui/core/CircularProgress';
 const useStyles = makeStyles((theme) => ({
@@ -34,7 +34,7 @@ const Categories=({categoriesData,fetchCategories})=>{
   let categoriesLinks
   if(!categoriesData.loading){
     categoriesLinks=categoriesList.map(category=>(
-      <CategoryOverview key={uuid()} name={category.strCategory}/>
+      <Overview key={uuid()} type="categories" name={category.strCategory}/>
     ))
   }
   // console.log(categoriesLinks);

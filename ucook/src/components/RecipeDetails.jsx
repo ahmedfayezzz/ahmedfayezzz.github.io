@@ -19,23 +19,6 @@ import Paper from "@material-ui/core/Paper";
 import IngredientTable from "./IngredientsTable";
 import Typography from "@material-ui/core/Typography";
 
-const StyledTableCell = withStyles((theme) => ({
-  head: {
-    backgroundColor: theme.palette.primary.light,
-    color: theme.palette.common.white,
-  },
-  body: {
-    fontSize: 14,
-  },
-}))(TableCell);
-
-const StyledTableRow = withStyles((theme) => ({
-  root: {
-    "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
-}))(TableRow);
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -50,6 +33,22 @@ const useStyles = makeStyles((theme) => ({
   grid: {
     padding: "1rem",
   },
+  leftBorder: {
+    borderLeft: "6px solid",
+    borderColor: theme.palette.primary.main,
+  },
+  rightBorder: {
+    borderRight: "6px solid",
+    borderRightColor: theme.palette.primary.main,
+    // [theme.breakpoints.down]
+  },
+
+  typography: {
+    color: "#2e5247",
+  },
+  container:{
+    backgroundColor:'rgba(255, 255, 255, 0.623)'
+  }
 }));
 const IMG = styled.img`
   width: 100%;
@@ -57,13 +56,19 @@ const IMG = styled.img`
   /* margin: 1rem auto; */
 `;
 const UL = styled.ul`
-  padding-left:1rem;
+  padding-left: 1rem;
+  list-style: none;
 `;
 const LI = styled.li`
   /* padding-left:1rem; */
 `;
+const IFRAME = styled.iframe`
+  width: 100%;
+  height: auto;
+  min-height: 200px;
+`;
 const RecipeDetails = (props) => {
-  console.log('RecipeDetails re-rending')
+  console.log("RecipeDetails re-rending");
   useEffect(() => {
     searchID(ID);
   }, []);
@@ -89,21 +94,19 @@ const RecipeDetails = (props) => {
       measures.push(recipe["strMeasure" + measureIndex]);
       measureIndex += 1;
     }
-    instructions = recipe.strInstructions.split('\r\n');
+    instructions = recipe.strInstructions.split("\r\n");
     instructionsList = instructions.map((instruction) => {
-      if(instruction){  
-        return(
-          <LI key={uuid()}>
+      if (instruction) {
+        return (
+          <span key={uuid()}>
             {instruction}
-            <br/>
-            <br/>
-          </LI>
-        )
+            <br />
+            <br />
+          </span>
+        );
       }
-    }
-      
-      
-    );
+      return;
+    });
   }
 
   // console.log(instructionsList);
@@ -114,12 +117,18 @@ const RecipeDetails = (props) => {
     </div>
   ) : (
     <Grid container spacing={0}>
-      <Grid item xs={2} />
-      
-      <Grid container item xs={12} sm={8}>
-      <Grid item xs={12}>
-        <Typography align="center" variant='h3'>{recipe.strMeal}</Typography>
-      </Grid>
+      <Grid item sm={2} />
+
+      <Grid className={classes.container  } container item sm={12} md={8}>
+        <Grid item xs={12}>
+          <Typography
+            className={classes.typography}
+            align="center"
+            variant="h4"
+          >
+            {recipe.strMeal}
+          </Typography>
+        </Grid>
         <Grid
           item
           xs={12}
@@ -138,31 +147,56 @@ const RecipeDetails = (props) => {
           xs={12}
           sm={6}
           style={{ display: "flex" }}
-          className={classes.grid}
+          className={(classes.grid, classes.rightBorder)}
         >
           {/* <div style={{ margin: "auto" }}> */}
           <IngredientTable column1={ingredients} column2={measures} />
           {/* </div> */}
         </Grid>
-        <Grid item xs={12} className={classes.grid}>
-          <UL>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          className={(classes.grid, classes.leftBorder)}
+        >
+          <Typography
+            className={classes.typography}
+            variant="h5"
+            style={{ fontWeight: 700, paddingBottom: "1rem" }}
+            align="center"
+          >
+            Instructions
+          </Typography>
+          <Typography
+            variant="body1"
+            style={{ color: "#163129", paddingLeft: "1rem" }}
+          >
             {instructionsList}
-          </UL>
+          </Typography>
         </Grid>
-        <Grid item xs={12} className={classes.grid}>
-          {recipe.strYoutube&&(
-          <iframe 
-            title={recipe.strMeal}
-            width="727" 
-            height="409" 
-            src={recipe.strYoutube.replace('watch?v=','embed/')} 
-            frameBorder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowFullScreen> 
-            </iframe>)}
+        <Grid item xs={12} md={6} className={classes.grid}>
+          {recipe.strYoutube && (
+            <div>
+              <Typography
+                className={classes.typography}
+                variant="h5"
+                style={{ fontWeight: 700, paddingBottom: "1rem" }}
+                align="center"
+              >
+                Instructions Video
+              </Typography>
+              <IFRAME
+                title={recipe.strMeal}
+                src={recipe.strYoutube.replace("watch?v=", "embed/")}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></IFRAME>
+            </div>
+          )}
         </Grid>
       </Grid>
-      <Grid item xs={2} />
+      <Grid item sm={2} />
     </Grid>
   );
 };

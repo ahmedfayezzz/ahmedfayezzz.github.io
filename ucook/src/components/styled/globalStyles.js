@@ -1,4 +1,4 @@
-import {createGlobalStyle}  from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
@@ -57,5 +57,10 @@ body {
 
 
 }
-`
-export default GlobalStyle
+.MuiTextField-root{
+  background-color:white;
+  border-radius:4px;
+  opacity:0.97
+}
+`;
+export default GlobalStyle;
